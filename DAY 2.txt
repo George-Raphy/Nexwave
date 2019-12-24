@@ -1,0 +1,73 @@
+select count(distinct job) from emp;
+
+COUNT(DISTINCTJOB)
+------------------
+                 5
+
+select sum(sal) from emp;
+
+  SUM(SAL)
+----------
+     29025
+
+select max(sal),min(sal),avg(sal) from emp;
+
+  MAX(SAL)   MIN(SAL)   AVG(SAL)
+---------- ---------- ----------
+      5000        800 2073.21429
+
+select max(sal)from emp where job='SALESMAN';
+
+  MAX(SAL)
+----------
+      1600
+
+select avg(sal)from emp where deptno=20;
+
+  AVG(SAL)
+----------
+      2175
+
+select count(deptno) from emp
+
+COUNT(DEPTNO)
+-------------
+           14
+select count(distinct deptno) from emp;
+
+COUNT(DISTINCTDEPTNO)
+---------------------
+                    3
+
+select count(deptno) from emp where deptno=10;
+
+COUNT(DEPTNO)
+-------------
+            3
+
+
+SQL> select count(job) from emp where job='MANAGER';
+
+COUNT(JOB)
+----------
+         3
+
+SQL> select distinct mgr from emp;
+
+       MGR
+----------
+      7839
+
+      7782
+      7698
+      7902
+      7566
+      7788
+
+SQL> select DEPTNO,count(ename) from emp grouP by deptno;
+
+    DEPTNO COUNT(ENAME)
+---------- ------------
+        30            6
+        20            5
+        10            3
