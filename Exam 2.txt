@@ -1,0 +1,131 @@
+
+Q 1 
+Create a class called point with data members to rep[resent the x and y coordinates and have a function to display the coordinates. Derive a class called Circle from Point with a data member to represent the radius.
+Have a functuion called area() to calculate the area of the circle and also display the coordinates.
+Derive a class Cylinder from Circle with a data member to represent the height of the cylinder.Have a function called Volume()to calculate the volume of the Cylinder.
+
+import java.util.*;
+import java.io.*;
+public class Point 
+{
+
+	int x,y;
+
+	void displaycor()
+	{
+		System.out.println("The x cordinate is:"+x);
+		System.out.println("The y cordinate is:"+y);
+	}
+}
+class Circle extends Point
+{
+	int r;
+	void area()
+	{
+		double a = 3.14*r*r;
+		System.out.println("The area is:"+a);
+		displaycor();
+	}
+}
+class Cylinder extends Circle
+{
+	int h;
+	void volume()
+	{
+		double v=3.14*r*r*h;
+		System.out.println("The volume is:"+v);
+	}
+}
+class m
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		Cylinder p = new Cylinder();
+		System.out.println("Enter x");
+		p.x = sc.nextInt();
+		System.out.println("Enter y");
+		p.y = sc.nextInt();
+		System.out.println("Enter Radius");
+		p.r = sc.nextInt();
+		System.out.println("Enter Height");
+		p.h = sc.nextInt();
+		p.displaycor();
+		p.area();
+		p.volume();
+		
+	}
+}
+
+Q 2 
+a) Create a class to hold information about books.Write a function to display information about the book.
+Data members: Title,Author,cost,no_of_books
+b) Create 3 instances of the above class and initialize the members of the class with the data accepted from the user.
+c) Accept a title and the no_of_books required from the user. Find whether the book exists. If it exists, check if the no_of_books are sufficient and if so indicate the total cost of the books.
+
+import java.util.Scanner;
+
+class Book
+{
+	String title;
+	String author;
+	double cost;
+	int nob;
+	public Book(String title, String author, double cost, int nob) 
+	{
+		this.title = title;
+		this.author = author;
+		this.cost = cost;
+		this.nob = nob;
+	}
+
+	void display() 
+	{
+		System.out.println("Title: " + title + ", Author: " + author);
+		System.out.println("Cost: " + cost);
+	}
+}
+
+class First
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter data for books.");
+		Book x[] = new Book[3];			
+		for (int i = 0; i < 3; i++) 
+		{
+			System.out.print("Enter title: ");
+			String title = sc.next();
+			System.out.print("Enter author: ");
+			String author = sc.next();
+			System.out.print("Enter cost: ");
+			double cost = sc.nextDouble();
+			System.out.print("Enter no of books: ");
+			int nob = sc.nextInt();
+			x[i] = new Book(title, author, cost, nob);
+		}
+
+		System.out.print("\nEnter title to search: ");
+		String title = sc.next();
+		System.out.print("Enter no of books required: ");
+		int nob = sc.nextInt();
+		boolean found = false;
+		for (int i = 0; i < 3; i++) 
+		{
+			if (title.equals(x[i].title) && (nob <= x[i].nob)) 
+			{
+				found = true;	
+				x[i].display();
+				System.out.println("Books are sufficient.");
+				System.out.println("Total cost of books: " + (x[i].cost * nob));
+			}
+		}
+
+		if (found == false) 
+		{
+			System.out.println("No books found.");
+		}
+	}
+}
+
